@@ -30,7 +30,7 @@ const Home = () => {
       <Col lg='3' sm='6'>
         <StatsHorizontal
           color='success'
-          statTitle='eKYC  Verified Users'
+          statTitle='Fingerprint Verified Users'
           icon={<UserCheck size={20} />}
           renderStats={<h3 className='fw-bolder mb-75'>04</h3>}
         />
@@ -38,7 +38,7 @@ const Home = () => {
       <Col lg='3' sm='6'>
         <StatsHorizontal
           color='secondary'
-          statTitle='Pending eKYC Users'
+          statTitle='Pending Fingerprint Users'
           icon={<UserX size={20} />}
           renderStats={<h3 className='fw-bolder mb-75'>07</h3>}
         />

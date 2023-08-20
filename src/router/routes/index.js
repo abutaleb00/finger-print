@@ -33,6 +33,7 @@ const Grantors = lazy(() => import("../../views/pages/Grantors"));
 const NewGrantors = lazy(() => import("../../views/pages/NewGrantors"));
 const VerifiedUserList = lazy(() => import("../../views/pages/VerifiedUserList"));
 const GrantorEdit = lazy(() => import("../../views/pages/GrantorEdit"));
+const PendingUser = lazy(() => import("../../views/pages/PendingUser"));
 const Login = lazy(() => import("../../views/Login"));
 const Register = lazy(() => import("../../views/Register"));
 const ForgotPassword = lazy(() => import("../../views/ForgotPassword"));
@@ -76,6 +77,10 @@ const Routes = [
   {
     path: "/grantor-edit",
     element: <GrantorEdit />,
+  },
+  {
+    path: "/pending-user",
+    element: <PendingUser />,
   },
   {
     path: "/login",

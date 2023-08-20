@@ -29,7 +29,7 @@ const GrantorList = () => {
     <div className="demo-inline-spacing">
       <div className="basic-modal">
       <Badge color={'primary'} className="text-capitalize" style={{cursor:"pointer"}} >
-        <span onClick={() => setBasicModal(!basicModal)}>Grantor List</span>
+        <span onClick={() => setBasicModal(!basicModal)}>Guarantors List</span>
       </Badge>
         {/* <Button color='primary' outline onClick={() => setBasicModal(!basicModal)}>
           Basic Modal

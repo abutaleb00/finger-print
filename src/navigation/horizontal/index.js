@@ -8,12 +8,6 @@ export default [
     navLink: "/home",
   },
   {
-    id: "VerifiedUserList",
-    title: "Verified User List",
-    icon: <UserCheck size={20} />,
-    navLink: "/verified-userlist",
-  },
-  {
     id: "nidverify",
     title: "Finger Verification",
     icon: <Globe size={20} />,
@@ -21,8 +15,20 @@ export default [
   },
   {
     id: "grantors",
-    title: "Grantors",
+    title: "Guarantors",
     icon: <UserPlus size={20} />,
     navLink: "/grantors",
+  },
+  {
+    id: "PendingUser",
+    title: "Pending User List",
+    icon: <UserCheck size={20} />,
+    navLink: "/pending-user",
+  },
+  {
+    id: "VerifiedUserList",
+    title: "Verified User List",
+    icon: <UserCheck size={20} />,
+    navLink: "/verified-userlist",
   },
 ];

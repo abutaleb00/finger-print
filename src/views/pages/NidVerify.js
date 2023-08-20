@@ -74,7 +74,8 @@ const NidVerify = () => {
       <CardBody className="my-2 py-50">
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Row>
-            <Col md="6" className="mb-1">
+          <Col md="8" className="mb-1">
+            <Col md="12" className="mb-1">
               <Label className="form-label" for="companyName">
                 NID Number
               </Label>
@@ -94,7 +95,7 @@ const NidVerify = () => {
                 <FormFeedback>Please enter a valid NID Number</FormFeedback>
               )}
             </Col>
-            <Col md="6" className="mb-1">
+            <Col md="12" className="mb-1">
               <Label className="form-label" for="country">
                 Date of Birth
               </Label>
@@ -105,8 +106,19 @@ const NidVerify = () => {
                 id="default-picker"
               />
             </Col>
+            </Col>
+            <Col
+              sm={{
+                offset: 1,
+                order: 2,
+                size: 2,
+              }}
+              style={{ textAlign: "center", marginTop: "5px" }}
+            >
+              <FingerPrintModal />
+            </Col>
           </Row>
-          <Row>
+          {/* <Row>
             <Col
               sm={{
                 offset: 6,
@@ -117,7 +129,7 @@ const NidVerify = () => {
             >
               <FingerPrintModal />
             </Col>
-          </Row>
+          </Row> */}
         </Form>
       </CardBody>
     </Card>
