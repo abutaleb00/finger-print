@@ -1,6 +1,6 @@
 // ** Reactstrap Imports
 // ** React Imports
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Row,
   Col,
@@ -28,24 +28,28 @@ import image3 from '@src/assets/images/avator/3.png'
 import image4 from '@src/assets/images/avator/4.png'
 
 const VerifiedUserList = () => {
-
+  useEffect(()=> {
+    localStorage.setItem("accountType", "0")
+  }, [])
   return (
     <Card>
       <CardHeader className="border-bottom">
-        <CardTitle tag="h4">Grantors List</CardTitle>
+        <CardTitle tag="h4">Verified User List</CardTitle>
       </CardHeader>
       <CardBody className="my-2 py-50">
-      <Row>
+      {/* <Row>
         <Col md="12" className="mb-1" style={{textAlign:"right"}}>
         <Link to="/new-grantors" className="btn btn-primary">
         + Add New Grantor
         </Link>
       </Col>
-      </Row>
+      </Row> */}
       <Table responsive>
       <thead>
         <tr>
           <th>Photo</th>
+          <th>Borrower Type</th>
+          <th>Company Name</th>
           <th>Applicant Name</th>
           <th>Father Name</th>
           <th>NID Number</th>
@@ -59,6 +63,8 @@ const VerifiedUserList = () => {
           <td>
             <img className='me-75' src={image1} alt='angular' height='20' width='20' />
           </td>
+          <td><span className='align-middle fw-bold'>SS International</span></td>
+          <td><span className='align-middle fw-bold'>Corporate</span></td>
           <td><span className='align-middle fw-bold'>Asma Khatun</span></td>
           <td>Ahamed Sharif</td>
           <td>9088768732423</td>
@@ -69,13 +75,23 @@ const VerifiedUserList = () => {
             </Badge>
           </td>
           <td>
-          <div style={{display:"inline-block"}}>
+          <div style={{display:"inline-block", marginTop:"-15px"}}>
             <div style={{display:"inline-block"}}>
               <GrantorList />
             </div>
+            <div style={{display:"inline-block", marginLeft:"-15px"}}>
+              <Badge 
+              onClick={() => {
+                localStorage.setItem("accountType", "3")
+                window.location.href = "/nid-verify";
+                }}
+               color={'success'} className="text-capitalize" style={{cursor:"pointer", marginRight:"5px"}} >
+                <span >Add Guarantor</span>
+              </Badge>
+            </div>
             <div style={{display:"inline-block"}}>
               <Link to="/grantor-edit" >
-              <Badge color={'primary'} className="text-capitalize" style={{cursor:"pointer"}} >
+              <Badge color={'warning'} className="text-capitalize" style={{cursor:"pointer"}} >
                 <span >Edit</span>
               </Badge>
               </Link>
@@ -87,6 +103,8 @@ const VerifiedUserList = () => {
           <td>
             <img className='me-75' src={image2} alt='angular' height='20' width='20' />
           </td>
+          <td><span className='align-middle fw-bold'>Individual</span></td>
+          <td><span className='align-middle fw-bold'>N/A</span></td>
           <td><span className='align-middle fw-bold'>Abdul Kalam</span></td>
           <td>Samsur Rahman</td>
           <td>8963453459</td>
@@ -97,13 +115,23 @@ const VerifiedUserList = () => {
             </Badge>
           </td>
           <td>
-          <div style={{display:"inline-block"}}>
+          <div style={{display:"inline-block", marginTop:"-15px"}}>
             <div style={{display:"inline-block"}}>
               <GrantorList />
             </div>
+            <div style={{display:"inline-block", marginLeft:"-15px"}}>
+              <Badge 
+              onClick={() => {
+                localStorage.setItem("accountType", "3")
+                window.location.href = "/nid-verify";
+                }}
+               color={'success'} className="text-capitalize" style={{cursor:"pointer", marginRight:"5px"}} >
+                <span >Add Guarantor</span>
+              </Badge>
+            </div>
             <div style={{display:"inline-block"}}>
               <Link to="/grantor-edit" >
-              <Badge color={'primary'} className="text-capitalize" style={{cursor:"pointer"}} >
+              <Badge color={'warning'} className="text-capitalize" style={{cursor:"pointer"}} >
                 <span >Edit</span>
               </Badge>
               </Link>
@@ -115,6 +143,8 @@ const VerifiedUserList = () => {
           <td>
             <img className='me-75' src={image3} alt='angular' height='20' width='20' />
           </td>
+          <td><span className='align-middle fw-bold'>Corporate</span></td>
+          <td><span className='align-middle fw-bold'>SS International</span></td>
           <td><span className='align-middle fw-bold'>Jamirul Islam</span></td>
           <td>Javed Iqbal</td>
           <td>9088768732423</td>
@@ -125,13 +155,23 @@ const VerifiedUserList = () => {
             </Badge>
           </td>
           <td>
-          <div style={{display:"inline-block"}}>
+          <div style={{display:"inline-block", marginTop:"-15px"}}>
             <div style={{display:"inline-block"}}>
               <GrantorList />
             </div>
+            <div style={{display:"inline-block", marginLeft:"-15px"}}>
+              <Badge 
+              onClick={() => {
+                localStorage.setItem("accountType", "3")
+                window.location.href = "/nid-verify";
+                }}
+               color={'success'} className="text-capitalize" style={{cursor:"pointer", marginRight:"5px"}} >
+                <span >Add Guarantor</span>
+              </Badge>
+            </div>
             <div style={{display:"inline-block"}}>
               <Link to="/grantor-edit" >
-              <Badge color={'primary'} className="text-capitalize" style={{cursor:"pointer"}} >
+              <Badge color={'warning'} className="text-capitalize" style={{cursor:"pointer"}} >
                 <span >Edit</span>
               </Badge>
               </Link>
@@ -143,6 +183,8 @@ const VerifiedUserList = () => {
           <td>
             <img className='me-75' src={image4} alt='angular' height='20' width='20' />
           </td>
+          <td><span className='align-middle fw-bold'>Individual</span></td>
+          <td><span className='align-middle fw-bold'>N/A</span></td>
           <td><span className='align-middle fw-bold'>Abdul Kalam</span></td>
           <td>Shariar Alam</td>
           <td>674956443354</td>
@@ -153,13 +195,23 @@ const VerifiedUserList = () => {
             </Badge>
           </td>
           <td>
-          <div style={{display:"inline-block"}}>
+          <div style={{display:"inline-block", marginTop:"-15px"}}>
             <div style={{display:"inline-block"}}>
               <GrantorList />
             </div>
+            <div style={{display:"inline-block", marginLeft:"-15px"}}>
+              <Badge 
+              onClick={() => {
+                localStorage.setItem("accountType", "3")
+                window.location.href = "/nid-verify";
+                }}
+               color={'success'} className="text-capitalize" style={{cursor:"pointer", marginRight:"5px"}} >
+                <span >Add Guarantor</span>
+              </Badge>
+            </div>
             <div style={{display:"inline-block"}}>
               <Link to="/grantor-edit" >
-              <Badge color={'primary'} className="text-capitalize" style={{cursor:"pointer"}} >
+              <Badge color={'warning'} className="text-capitalize" style={{cursor:"pointer"}} >
                 <span >Edit</span>
               </Badge>
               </Link>

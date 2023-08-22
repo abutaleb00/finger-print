@@ -40,7 +40,7 @@ const GrantorList = () => {
           toggle={() => setBasicModal(!basicModal)}
         >
           <ModalHeader toggle={() => setBasicModal(!basicModal)}>
-          Grantor List
+          Guarantor List
           </ModalHeader>
           <ModalBody>
           <Table responsive>

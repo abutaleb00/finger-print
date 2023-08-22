@@ -1,4 +1,4 @@
-import { UserCheck, Home, Globe, UserPlus } from "react-feather";
+import { UserCheck, Home, Globe, UserPlus, UserMinus, Clock, Users } from "react-feather";
 
 export default [
   {
@@ -13,21 +13,21 @@ export default [
     icon: <Globe size={20} />,
     navLink: "/nid-verify",
   },
-  {
-    id: "grantors",
-    title: "Guarantors",
-    icon: <UserPlus size={20} />,
-    navLink: "/grantors",
-  },
+  // {
+  //   id: "grantors",
+  //   title: "Guarantors",
+  //   icon: <UserPlus size={20} />,
+  //   navLink: "/grantors",
+  // },
   {
     id: "PendingUser",
-    title: "Pending User List",
-    icon: <UserCheck size={20} />,
-    navLink: "/pending-user",
+    title: "Pending Verification",
+    icon: <Clock size={20} />,
+    navLink: "/pending-user"
   },
   {
     id: "VerifiedUserList",
-    title: "Verified User List",
+    title: "Verified List",
     icon: <UserCheck size={20} />,
     navLink: "/verified-userlist",
   },

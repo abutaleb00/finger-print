@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Card,
   CardHeader,
@@ -16,6 +17,9 @@ import '@styles/react/apps/app-users.scss'
 import { User, UserPlus, UserCheck, UserX } from 'react-feather'
 
 const Home = () => {
+  useEffect(()=> {
+    localStorage.setItem("accountType", "0")
+  }, [])
   return (
     <div className='app-user-list'>
     <Row>
@@ -46,7 +50,7 @@ const Home = () => {
       <Col lg='3' sm='6'>
         <StatsHorizontal
           color='warning'
-          statTitle='Grantor Users'
+          statTitle='Guarantor Users'
           icon={<UserPlus size={20} />}
           renderStats={<h3 className='fw-bolder mb-75'>23</h3>}
         />

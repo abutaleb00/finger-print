@@ -11,13 +11,16 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Fingerprint e-KYC
+          Fingerprint Authentication Solution
         </a>
         <span className="d-none d-sm-inline-block">, All rights Reserved</span>
       </span>
       <span className="float-md-end d-none d-md-block">
-        Developed by:  Commlink Info tech Ltd.
-        <Heart size={14} />
+        Developed by:  <a
+          href="https://www.commlinkinfotech.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Commlink Info Tech Ltd.</a>
       </span>
     </p>
   );
