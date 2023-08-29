@@ -3603,6 +3603,13 @@
     "classnames" "^2.2.6"
     "tiny-invariant" "^1.1.0"
 
+"react-sweetalert2@^0.6.0":
+  "integrity" "sha512-4MEWGAJamSfoj56m7MUs7IfBnev9wJYs0RayvoHvxshSQeH62iK0N/EkDiHr3VuZ3vTy34kOpzL1Yg3b3VYF8w=="
+  "resolved" "https://registry.npmjs.org/react-sweetalert2/-/react-sweetalert2-0.6.0.tgz"
+  "version" "0.6.0"
+  dependencies:
+    "sweetalert2" "^11.7.5"
+
 "react-transition-group@^4.3.0", "react-transition-group@^4.4.2", "react-transition-group@^4.4.5":
   "integrity" "sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g=="
   "resolved" "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz"
@@ -4175,7 +4182,7 @@
   "resolved" "https://registry.npmjs.org/sweetalert2-react-content/-/sweetalert2-react-content-5.0.7.tgz"
   "version" "5.0.7"
 
-"sweetalert2@^11.4.14":
+"sweetalert2@^11.4.14", "sweetalert2@^11.7.5":
   "integrity" "sha512-mrkLPk54DkqZ8rtFpUsTAV+LaX6Bn0C5r7NTzn0VB6tScaEHCC5BBAQaBdZNd3qDJLPF0FT6/YHPDaEtL1x/Zw=="
   "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.7.26.tgz"
   "version" "11.7.26"

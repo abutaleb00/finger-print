@@ -25,6 +25,8 @@ import CompanyProfile from "./CompanyProfile";
 import CompanyProfileProcess from "./CompanyProfileProcess";
 import GuarantorsProfile from "./GuarantorsProfile";
 import finger from "@src/assets/images/pages/fingerprint.svg";
+import data from "../components/ec.json"
+import Swal from 'sweetalert2'
   
 // ** Styles
 import "@styles/react/libs/react-select/_react-select.scss";
@@ -37,15 +39,32 @@ export default class NidVerify2 extends Component {
         //   ...props.location.state,
           accountType: localStorage.getItem("accountType") !== undefined ? localStorage.getItem("accountType") : "0",
           dob: "1989-10-04",
-          nid: "5975092452",
+          nid: "",
           colorButton: "red",
           loaderShow: false,
+          swalProps: {},
+          ecresult: []
         };
       }
       receiveFingerData = (data) => {
         console.log(data);
         this.setState({ ...data });
-      };    
+      };
+   
+       handleClick(){
+        this.swal.fire({
+            title: 'Example',
+            text: 'Swal injected',
+            icon: 'success',
+        });
+    }
+    successAlert = () => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No user found',
+          })
+    }
   render() {
     console.log("color", this.state)
     const accountOption = [
@@ -155,13 +174,35 @@ export default class NidVerify2 extends Component {
                 }}
                 style={{ textAlign: "center", marginTop: "15px" }}
               >
-                <Badge color='primary' style={{padding:"12px 25px"}}>
-                    <Link
-                        to='/ec-data'
+                    <Button
+                    color='primary'
+                    // to={ecresult?.length > 0}
+                    onClick={(e) => {
+                        const ecresult = data.filter((obj) => obj.nationalId === this.state.nid);
+                       if(ecresult?.length > 0){
+                        window.location.href = "/ec-data";
+                       } else {
+                        this.successAlert()
+                       }
+                    }}
+                    // to={this.state.ecresult?.length === 0 && {
+                    //     pathname: "/ec-data",
+                    //     state: { userinfo: this.state.ecresult }
+                    //   }}
+                        // to='/ec-data'
                         >
                         Submit
-                    </Link>
-                </Badge>
+                    </Button>
+                    {/* <Link
+                    color='primary'
+                    to={{
+                        pathname: "/ec-data",
+                        state: { userinfo: this.state.ecresult }
+                      }}
+                        // to='/ec-data'
+                        >
+                        Submit 2
+                    </Link> */}
               </Col>
             </Row>
             {/* <Row>

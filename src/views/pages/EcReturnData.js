@@ -10,90 +10,23 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import React, { useEffect } from 'react';
 import Select, { components } from "react-select"; // eslint-disable-line
 import Flatpickr from "react-flatpickr";
 import { useState } from "react";
+import data from "../components/ec.json"
 
-const EcReturnData = () => {
+const EcReturnData = (props) => {
   const [picker, setPicker] = useState(new Date());
-  const [state, setSate] = useState({
-    name: "মঈন মুস্তাকিম",
-    nameEn: "Moin Mostakim",
-    bloodGroup: "B+",
-    dateOfBirth: "1989-10-25",
-    father: "মোঃ নাছির উদ্দিন",
-    mother: "মনোয়ারা বেগম",
-    spouse: "",
-    nationalId: "123456789",
-    occupation: "ছাত্র/ছাত্রী",
-    gender:"male",
-    permanentAddress: {
-      division: "ঢাকা",
-      district: "ঢাকা",
-      rmo: "1",
-      upozila: "ঢাকা",
-      postOffice: "ঢাকা",
-      postalCode: "",
-      wardForUnionPorishod: 1,
-      additionalMouzaOrMoholla: "",
-      additionalVillageOrRoad: "ঢাকা",
-      homeOrHoldingNo: "",
-      region: "ঢাকা",
-    },
-    photo:
-      "http://localhost:8989/file/Photo-ba02a2c4-a273-102b-b531-809d930a783c.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=fileobj%2F20210517%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210517T083535Z&X-Amz-Expires=120&X-Amz-SignedHeaders=host&X-Amz-Signature=f8698e3b8ed0e75ce29b058d1e88ccd0409f44fe3802176d72097c7453453135",
-    presentAddress: {
-      division: "ঢাকা",
-      district: "ঢাকা",
-      rmo: "9",
-      upozila: "মোহাম্মদপুর",
-      cityCorporationOrMunicipality: "ঢাকা উত্তর সিটি কর্পোরেশন",
-      unionOrWard: "ওয়ার্ড নং-10",
-      postOffice: "মোহাম্মদপুর",
-      postalCode: "1207",
-      wardForUnionPorishod: 0,
-      additionalMouzaOrMoholla: "তাজমহল রোড",
-      additionalVillageOrRoad: "",
-      homeOrHoldingNo: "৫/১",
-      region: "ঢাকা",
-    },
-  })
-  const [permanentAddress, setPermanentAddress] = useState({
-      division: "ঢাকা",
-      district: "ঢাকা",
-      rmo: "9",
-      upozila: "মোহাম্মদপুর",
-      cityCorporationOrMunicipality: "ঢাকা উত্তর সিটি কর্পোরেশন",
-      unionOrWard: "ওয়ার্ড নং-10",
-      postOffice: "মোহাম্মদপুর",
-      postalCode: "1207",
-      wardForUnionPorishod: 0,
-      additionalMouzaOrMoholla: "তাজমহল রোড",
-      additionalVillageOrRoad: "",
-      homeOrHoldingNo: "৫/১",
-      region: "ঢাকা",
-  })
-  const [presentAddress, setPresentAddress] = useState({
-      division: "ঢাকা",
-      district: "ঢাকা",
-      rmo: "9",
-      upozila: "মোহাম্মদপুর",
-      cityCorporationOrMunicipality: "ঢাকা উত্তর সিটি কর্পোরেশন",
-      unionOrWard: "ওয়ার্ড নং-10",
-      postOffice: "মোহাম্মদপুর",
-      postalCode: "1207",
-      wardForUnionPorishod: 0,
-      additionalMouzaOrMoholla: "তাজমহল রোড",
-      additionalVillageOrRoad: "",
-      homeOrHoldingNo: "৫/১",
-      region: "ঢাকা",
-  })
+  const [state, setSate] = useState(data)
+  const [index, setIndex] = useState([1])
+  const [permanentAddress, setPermanentAddress] = useState(data[index].permanentAddress)
+  const [presentAddress, setPresentAddress] = useState(data[index].presentAddress)
   const genderOptions = [
     { value: "male", label: "Male" },
     { value: "female", label: "Female", color: "#0052CC", isFixed: true },
     { value: "third", label: "Third Person" },
   ];
-
   return (
     <Card>
       <CardHeader>
@@ -110,8 +43,8 @@ const EcReturnData = () => {
               type="text"
               id="basicInput"
               placeholder="Enter NID Number"
-              value={state.nationalId}
-              onChange={(e) => setSate({...state, nationalId: e.target.value})}
+              value={state[index].nationalId}
+              disabled
             />
           </Col>
           <Col className="mb-1" xl="4" md="6" sm="12">
@@ -122,8 +55,8 @@ const EcReturnData = () => {
               type="text"
               id="basicInput"
               placeholder="Enter"
-              value={state.name}
-              onChange={(e) => setSate({...state, name: e.target.value})}
+              value={state[index].name}
+              disabled
             />
           </Col>
           <Col className="mb-1" xl="4" md="6" sm="12">
@@ -134,20 +67,21 @@ const EcReturnData = () => {
               type="text"
               id="basicInput"
               placeholder="Enter"
-              value={state.nameEn}
-              onChange={(e) => setSate({...state, nameEn: e.target.value})}
+              value={state[index].nameEn}
+              disabled
             />
           </Col>
           <Col className="mb-1" xl="4" md="6" sm="12">
             <Label className="form-label" for="basicInput">
              Date of Birth
             </Label>
-            <Flatpickr
-                className="form-control"
-                value={picker}
-                onChange={(date) => setPicker(date)}
-                id="default-picker"
-              />
+            <Input
+              type="text"
+              id="basicInput"
+              placeholder="Enter"
+              value={state[index].dateOfBirth}
+              disabled
+            />
           </Col>
           <Col className="mb-1" xl="4" md="6" sm="12">
             <Label className="form-label" for="basicInput">
@@ -157,8 +91,8 @@ const EcReturnData = () => {
               type="text"
               id="basicInput"
               placeholder="Enter"
-              value={state.father}
-              onChange={(e) => setSate({...state, father: e.target.value})}
+              value={state[index].father}
+              disabled
             />
           </Col>
           <Col className="mb-1" xl="4" md="6" sm="12">
@@ -169,32 +103,9 @@ const EcReturnData = () => {
               type="text"
               id="basicInput"
               placeholder="Enter"
-              value={state.mother}
-              onChange={(e) => setSate({...state, mother: e.target.value})}
+              value={state[index].mother}
+              disabled
             />
-          </Col>
-          <Col className="mb-1" xl="4" md="6" sm="12">
-            <Label className="form-label" for="basicInput">
-              Spouse Name
-            </Label>
-            <Input
-              type="text"
-              id="basicInput"
-              placeholder="Enter Spouse Name"
-              value={state.spouse}
-              onChange={(e) => setSate({...state, spouse: e.target.value})}
-            />
-          </Col>
-          <Col className="mb-1" xl="4" md="6" sm="12">
-            <Label className="form-label" for="basicInput">
-              Profession
-            </Label>
-            <Input 
-              type="text" 
-              id="basicInput" 
-              placeholder="Enter Profession" 
-              value={state.occupation}
-              onChange={(e) => setSate({...state, occupation: e.target.value})} />
           </Col>
           <Col className="mb-1" xl="4" md="6" sm="12">
             <Label className="form-label" for="basicInput">
@@ -208,7 +119,29 @@ const EcReturnData = () => {
               className="react-select"
               classNamePrefix="select"
               onChange={(e) => setSate({...state, gender: e.value})}
+              isDisabled={true}
             />
+          </Col>
+          <Col className="mb-1" xl="4" md="6" sm="12">
+            <Label className="form-label" for="basicInput">
+              Spouse Name
+            </Label>
+            <Input
+              type="text"
+              id="basicInput"
+              placeholder="Enter Spouse Name"
+              onChange={(e) => setSate({...state, spouse: e.target.value})}
+            />
+          </Col>
+          <Col className="mb-1" xl="4" md="6" sm="12">
+            <Label className="form-label" for="basicInput">
+              Profession
+            </Label>
+            <Input 
+              type="text" 
+              id="basicInput" 
+              placeholder="Enter Profession" 
+              onChange={(e) => setSate({...state, occupation: e.target.value})} />
           </Col>
           <Col className="mb-1" xl="4" md="6" sm="12">
             <Label className="form-label" for="basicInput">
