@@ -44,11 +44,22 @@ const NidVerify = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ defaultValues });
+  const[colorButton, setColorButton] = useState("red")
   const [picker, setPicker] = useState(new Date());
   const [accountType, setAccountType] = useState(localStorage.getItem("accountType") !== undefined ? localStorage.getItem("accountType") : "0");
 useEffect(()=> {
   setAccountType(localStorage.getItem("accountType") !== undefined ? localStorage.getItem("accountType") : "0")
+  
 }, [accountType])
+useEffect(()=> {
+  window.fingerComponent
+}, [])
+
+const receiveFingerData = (data) => {
+  console.log(data);
+  // this.setState({ ...data });
+};
+
   const onSubmit = (data) => {
     if (Object.values(data).every((field) => field.length > 0)) {
       return null;
@@ -104,7 +115,7 @@ const accountOption = [
          {accountType === "3" || accountType ==="4" || accountType ==="5" ? <CompanyProfileProcess /> : ""}
          {accountType === "5" &&  <GuarantorsProfile />}
         {accountType === "1" || accountType === "4" ?
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form>
           <hr />
           <Row>
           <Col md="8" className="mb-1">
@@ -148,6 +159,23 @@ const accountOption = [
               }}
               style={{ textAlign: "center", marginTop: "5px" }}
             >
+              <button
+               type="button"
+               className={
+                colorButton === "red"
+                  ? "btn btn-primary primary-b"
+                  : "btn btn-success primary-c"
+              }
+               onClick={() => {
+                return window.captureFinger(
+                  this,
+                  "hfFingerData",
+                  colorButton
+                )
+              }}
+              >
+                Finger
+              </button>
               <FingerPrintModal />
             </Col>
           </Row>

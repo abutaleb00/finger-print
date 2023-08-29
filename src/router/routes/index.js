@@ -28,6 +28,7 @@ const DefaultRoute = "/login";
 const Home = lazy(() => import("../../views/Home"));
 const SecondPage = lazy(() => import("../../views/SecondPage"));
 const NidVerify = lazy(() => import("../../views/pages/NidVerify"));
+const NidVerify2 = lazy(() => import("../../views/pages/NidVerify2"));
 const EcReturnData = lazy(() => import("../../views/pages/EcReturnData"));
 const Grantors = lazy(() => import("../../views/pages/Grantors"));
 const NewGrantors = lazy(() => import("../../views/pages/NewGrantors"));
@@ -56,7 +57,7 @@ const Routes = [
   },
   {
     path: "/nid-verify",
-    element: <NidVerify />,
+    element: <NidVerify2 />,
   },
   {
     path: "/ec-data",
