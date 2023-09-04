@@ -38,14 +38,9 @@ const defaultValues = {
 const NidVerify = () => {
   const source = finger;
   // ** Hooks
-  const {
-    control,
-    setError,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ defaultValues });
   const[colorButton, setColorButton] = useState("red")
   const [picker, setPicker] = useState(new Date());
+  const [nidNumber, setNidNumber] = useState('');
   const [accountType, setAccountType] = useState(localStorage.getItem("accountType") !== undefined ? localStorage.getItem("accountType") : "0");
 useEffect(()=> {
   setAccountType(localStorage.getItem("accountType") !== undefined ? localStorage.getItem("accountType") : "0")
@@ -123,21 +118,11 @@ const accountOption = [
               <Label className="form-label" for="companyName">
                 NID Number
               </Label>
-              <Controller
-                id="companyName"
-                control={control}
-                name="companyName"
-                render={({ field }) => (
                   <Input
+                   id="nidNumber"
                     placeholder="Enter NID Number"
-                    invalid={errors.companyName && true}
-                    {...field}
+                    onChange={() => setNidNumber(e.target.value)}
                   />
-                )}
-              />
-              {errors.companyName && (
-                <FormFeedback>Please enter a valid NID Number</FormFeedback>
-              )}
             </Col>
             <Col md="12" className="mb-1">
               <Label className="form-label" for="country">
@@ -173,6 +158,7 @@ const accountOption = [
                   colorButton
                 )
               }}
+              disabled
               >
                 Finger
               </button>

@@ -15,18 +15,21 @@ import Select, { components } from "react-select"; // eslint-disable-line
 import Flatpickr from "react-flatpickr";
 import { useState } from "react";
 import data from "../components/ec.json"
+import { useLocation } from "react-router-dom";
 
 const EcReturnData = (props) => {
+  const location = useLocation()
   const [picker, setPicker] = useState(new Date());
-  const [state, setSate] = useState(data)
+  const [state, setSate] = useState(location.state?.userinfo[0])
   const [index, setIndex] = useState([1])
-  const [permanentAddress, setPermanentAddress] = useState(data[index].permanentAddress)
-  const [presentAddress, setPresentAddress] = useState(data[index].presentAddress)
+  const [permanentAddress, setPermanentAddress] = useState(location.state?.userinfo[0]?.permanentAddress)
+  const [presentAddress, setPresentAddress] = useState(location.state?.userinfo[0]?.presentAddress)
   const genderOptions = [
     { value: "male", label: "Male" },
     { value: "female", label: "Female", color: "#0052CC", isFixed: true },
     { value: "third", label: "Third Person" },
   ];
+  console.log("props", location.state)
   return (
     <Card>
       <CardHeader>
@@ -43,7 +46,7 @@ const EcReturnData = (props) => {
               type="text"
               id="basicInput"
               placeholder="Enter NID Number"
-              value={state[index].nationalId}
+              value={state?.nationalId}
               disabled
             />
           </Col>
@@ -55,7 +58,7 @@ const EcReturnData = (props) => {
               type="text"
               id="basicInput"
               placeholder="Enter"
-              value={state[index].name}
+              value={state?.name}
               disabled
             />
           </Col>
@@ -67,7 +70,7 @@ const EcReturnData = (props) => {
               type="text"
               id="basicInput"
               placeholder="Enter"
-              value={state[index].nameEn}
+              value={state?.nameEn}
               disabled
             />
           </Col>
@@ -79,7 +82,7 @@ const EcReturnData = (props) => {
               type="text"
               id="basicInput"
               placeholder="Enter"
-              value={state[index].dateOfBirth}
+              value={state?.dateOfBirth}
               disabled
             />
           </Col>
@@ -91,7 +94,7 @@ const EcReturnData = (props) => {
               type="text"
               id="basicInput"
               placeholder="Enter"
-              value={state[index].father}
+              value={state?.father}
               disabled
             />
           </Col>
@@ -103,7 +106,7 @@ const EcReturnData = (props) => {
               type="text"
               id="basicInput"
               placeholder="Enter"
-              value={state[index].mother}
+              value={state?.mother}
               disabled
             />
           </Col>

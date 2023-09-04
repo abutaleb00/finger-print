@@ -11,16 +11,13 @@ import {
     CardHeader,
     CardTitle,
     CardBody,
-    FormFeedback,
   } from "reactstrap";
   import { Link } from 'react-router-dom'
 import "flatpickr/dist/themes/airbnb.css";
   // ** Third Party Components
 import "cleave.js/dist/addons/cleave-phone.us";
-import { useForm, Controller } from "react-hook-form";
 import Flatpickr from "react-flatpickr";
 import Select from "react-select"; 
-import FingerPrintModal from "./FingerPrintModal";
 import CompanyProfile from "./CompanyProfile";
 import CompanyProfileProcess from "./CompanyProfileProcess";
 import GuarantorsProfile from "./GuarantorsProfile";
@@ -50,19 +47,17 @@ export default class NidVerify2 extends Component {
         console.log(data);
         this.setState({ ...data });
       };
-   
-       handleClick(){
-        this.swal.fire({
-            title: 'Example',
-            text: 'Swal injected',
-            icon: 'success',
-        });
-    }
     successAlert = () => {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'No user found',
+            text: 'No fingerprint match found',
+          })
+    }
+    errorAlert = () => {
+        Swal.fire({
+            icon: 'error',
+            text: 'Please input NID & Date of Birth',
           })
     }
   render() {
@@ -118,6 +113,7 @@ export default class NidVerify2 extends Component {
                 </Label>
                 <Input
                     placeholder="Enter NID Number"
+                    value={this.state.nid}
                     onChange={(e) => this.setState({nid: e.target.value})}
                 />
               </Col>
@@ -149,13 +145,21 @@ export default class NidVerify2 extends Component {
                         ? "warning"
                         : "success"
                     }
-                    outline
+                    outline={
+                      this.state.colorButton === "red"
+                      ? true
+                      : false
+                  }
                     onClick={() => {
+                      if(this.state.nid !== ''){
                         return window.captureFinger(
                           this,
                           "hfFingerData",
                           this.state
                         )
+                      } else {
+                        this.errorAlert()
+                      }
                       }}
                     >
                     <img
@@ -176,47 +180,30 @@ export default class NidVerify2 extends Component {
               >
                     <Button
                     color='primary'
-                    // to={ecresult?.length > 0}
                     onClick={(e) => {
                         const ecresult = data.filter((obj) => obj.nationalId === this.state.nid);
                        if(ecresult?.length > 0){
-                        window.location.href = "/ec-data";
+                        this.setState({ecresult: ecresult}, ()=>{
+                          document.getElementById("button2").click();
+                        })
                        } else {
                         this.successAlert()
                        }
                     }}
-                    // to={this.state.ecresult?.length === 0 && {
-                    //     pathname: "/ec-data",
-                    //     state: { userinfo: this.state.ecresult }
-                    //   }}
-                        // to='/ec-data'
+                    disabled={this.state.nid === ''}
                         >
                         Submit
                     </Button>
-                    {/* <Link
-                    color='primary'
-                    to={{
-                        pathname: "/ec-data",
-                        state: { userinfo: this.state.ecresult }
-                      }}
-                        // to='/ec-data'
-                        >
-                        Submit 2
-                    </Link> */}
+                    <Link
+                    id='button2'
+                    style={{display:"none"}}
+                      to={`/ec-data`}
+                      state={{ userinfo: this.state.ecresult }}
+                  >
+                      redirect
+                  </Link>
               </Col>
             </Row>
-            {/* <Row>
-              <Col
-                sm={{
-                  offset: 6,
-                  order: 2,
-                  size: 2,
-                }}
-                style={{ textAlign: "center", marginTop: "20px" }}
-              >
-                <FingerPrintModal />
-              </Col>
-            </Row> */}
           </Form>
           : ""
           }
