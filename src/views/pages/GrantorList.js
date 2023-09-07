@@ -13,11 +13,12 @@ import {
 } from "reactstrap";
 import finger from "@src/assets/images/pages/fingerprint.svg";
 import fingerapp from "@src/assets/images/pages/fingerprint-app.png";
-import { MoreVertical, Edit, Trash } from 'react-feather'
+import { Users, Edit, Trash } from 'react-feather'
 import image1 from '@src/assets/images/avator/1.png'
 import image2 from '@src/assets/images/avator/2.png'
 import image3 from '@src/assets/images/avator/3.png'
 import image4 from '@src/assets/images/avator/4.png'
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const GrantorList = () => {
   const source = finger;
@@ -28,9 +29,14 @@ const GrantorList = () => {
   return (
     <div className="demo-inline-spacing">
       <div className="basic-modal">
-      <Badge color={'primary'} className="text-capitalize" style={{cursor:"pointer"}} >
-        <span onClick={() => setBasicModal(!basicModal)}>Guarantors List</span>
+      <Badge  data-tooltip-id={`my-tooltip`} color={'primary'} className="text-capitalize" style={{cursor:"pointer"}} >
+        <span onClick={() => setBasicModal(!basicModal)}><Users /></span>
       </Badge>
+        <ReactTooltip
+          id={`my-tooltip`}
+          place="bottom"
+          content="Guarantor List"
+              />
         {/* <Button color='primary' outline onClick={() => setBasicModal(!basicModal)}>
           Basic Modal
         </Button> */}

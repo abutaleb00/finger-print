@@ -31,6 +31,7 @@ const NidVerify = lazy(() => import("../../views/pages/NidVerify"));
 const NidVerify2 = lazy(() => import("../../views/pages/NidVerify2"));
 const EcReturnData = lazy(() => import("../../views/pages/EcReturnData"));
 const Grantors = lazy(() => import("../../views/pages/Grantors"));
+const ApplicationForm = lazy(() => import("../../views/pages/ApplicationForm"));
 const NewGrantors = lazy(() => import("../../views/pages/NewGrantors"));
 const VerifiedUserList = lazy(() => import("../../views/pages/VerifiedUserList"));
 const GrantorEdit = lazy(() => import("../../views/pages/GrantorEdit"));
@@ -82,6 +83,10 @@ const Routes = [
   {
     path: "/pending-user",
     element: <PendingUser />,
+  },
+  {
+    path: "/application-form",
+    element: <ApplicationForm />,
   },
   {
     path: "/login",

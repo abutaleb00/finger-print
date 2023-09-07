@@ -35,7 +35,7 @@ export default class NidVerify2 extends Component {
         this.state = {
         //   ...props.location.state,
           accountType: localStorage.getItem("accountType") !== undefined ? localStorage.getItem("accountType") : "0",
-          dob: "1989-10-04",
+          dob: new Date(),
           nid: "",
           colorButton: "red",
           loaderShow: false,
@@ -43,10 +43,7 @@ export default class NidVerify2 extends Component {
           ecresult: []
         };
       }
-      receiveFingerData = (data) => {
-        console.log(data);
-        this.setState({ ...data });
-      };
+     
     successAlert = () => {
         Swal.fire({
             icon: 'error',
@@ -54,6 +51,36 @@ export default class NidVerify2 extends Component {
             text: 'No fingerprint match found',
           })
     }
+    dataAlert = () => {
+      let timerInterval
+      Swal.fire({
+        title: 'Data Processing!',
+        html: 'Fingerprint data matching......',
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading()
+          timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft()
+          }, 100)
+        },
+        willClose: () => {
+          clearInterval(timerInterval)
+        }
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          document.getElementById("button1").click();
+        }
+      })
+    }
+    receiveFingerData = (data) => {
+      console.log(data);
+     if( data?.extraData?.colorButton === "green"){
+      this.dataAlert()
+     }
+      this.setState({ ...data });
+    };
     errorAlert = () => {
         Swal.fire({
             icon: 'error',
@@ -123,6 +150,7 @@ export default class NidVerify2 extends Component {
                 </Label>
                 <Flatpickr
                   className="form-control"
+                  defaultValue={this.state.dob}
                   value={this.state.dob}
                   onChange={(date) => this.setState({dob: date})}
                   id="default-picker"
@@ -139,17 +167,13 @@ export default class NidVerify2 extends Component {
               >
                 <Button
                     type="reset"
-                    // color="warning"
-                    color={
-                        this.state.colorButton === "red"
-                        ? "warning"
-                        : "success"
-                    }
-                    outline={
-                      this.state.colorButton === "red"
-                      ? true
-                      : false
-                  }
+                    color="warning"
+                    // color={
+                    //     this.state.colorButton === "red"
+                    //     ? "warning"
+                    //     : "success"
+                    // }
+                    outline
                     onClick={() => {
                       if(this.state.nid !== ''){
                         return window.captureFinger(
@@ -179,8 +203,10 @@ export default class NidVerify2 extends Component {
                 style={{ textAlign: "center", marginTop: "15px" }}
               >
                     <Button
-                    color='primary'
-                    onClick={(e) => {
+                    style={{display:"none"}}
+                     id='button1'
+                     color='primary'
+                     onClick={(e) => {
                         const ecresult = data.filter((obj) => obj.nationalId === this.state.nid);
                        if(ecresult?.length > 0){
                         this.setState({ecresult: ecresult}, ()=>{

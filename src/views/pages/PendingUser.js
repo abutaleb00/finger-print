@@ -27,6 +27,7 @@ import image1 from '@src/assets/images/avator/1.png'
 import image2 from '@src/assets/images/avator/2.png'
 import image3 from '@src/assets/images/avator/3.png'
 import image4 from '@src/assets/images/avator/4.png'
+import data from "../components/ec.json"
 
 const PendingUser = () => {
   useEffect(()=> {
@@ -41,19 +42,49 @@ const PendingUser = () => {
       <Table responsive>
       <thead>
         <tr>
-          <th>Photo</th>
-          <th>Borrower Type</th>
-          <th>Company Name</th>
           <th>Name</th>
           <th>Father Name</th>
+          <th>Mother Name</th>
           <th>NID Number</th>
-          <th>Phone Number</th>
+          <th>Date of Birth</th>
+          <th>Occupation</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        {
+          data.map((v, i) =>{
+            return(
+              <tr key={i}>
+              <td>{v?.nameEn}</td>
+              <td>{v?.father}</td>
+              <td>{v?.mother}</td>
+              <td>{v?.nationalId}</td>
+              <td>{v?.dateOfBirth}</td>
+              <td>{v?.occupation}</td>
+              <td>
+                <Badge pill color='light-warning' className='me-1'>
+                  Pending
+                </Badge>
+              </td>
+              <td>
+              <div style={{display:"inline-block", marginRight:"10px"}}>
+                  <Badge color={'success'} className="text-capitalize" style={{cursor:"pointer"}} >
+                    <span >Approved</span>
+                  </Badge>
+              </div>
+              <div style={{display:"inline-block"}}>
+                  <Badge color={'danger'} className="text-capitalize" style={{cursor:"pointer"}} >
+                    <span >Reject</span>
+                  </Badge>
+              </div>
+              </td>
+              </tr>
+            )
+          })
+        }
+        {/* <tr>
           <td>
             <img className='me-75' src={image1} alt='angular' height='20' width='20' />
           </td>
@@ -136,7 +167,7 @@ const PendingUser = () => {
               </Badge>
           </div>
           </td>
-        </tr>
+        </tr> */}
       </tbody>
     </Table>
       </CardBody>
