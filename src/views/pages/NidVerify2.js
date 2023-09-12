@@ -175,7 +175,7 @@ export default class NidVerify2 extends Component {
                     // }
                     outline
                     onClick={() => {
-                      if(this.state.nid !== ''){
+                      if(this.state.nid !== '') {
                         return window.captureFinger(
                           this,
                           "hfFingerData",
