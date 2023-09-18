@@ -62,6 +62,7 @@ export default class NidVerify2 extends Component {
           Swal.showLoading()
           timerInterval = setInterval(() => {
             b.textContent = Swal.getTimerLeft()
+            // document.getElementById("button2").click();
           }, 100)
         },
         willClose: () => {
@@ -70,15 +71,21 @@ export default class NidVerify2 extends Component {
       }).then((result) => {
         /* Read more about handling dismissals below */
         if (result.dismiss === Swal.DismissReason.timer) {
-          document.getElementById("button1").click();
+          if(this.state.ecresult?.length > 0){
+            document.getElementById("button2").click();
+            console.log("this.state.ecresult", this.state.ecresult)
+          } else{
+            console.log("this.state.ecresult 2", this.state.ecresult)
+            this.successAlert() 
+          }
         }
       })
     }
     receiveFingerData = (data) => {
       console.log(data);
-     if( data?.extraData?.colorButton === "green"){
-      this.dataAlert()
-     }
+    //  if( data?.extraData?.colorButton === "green"){
+    //   this.dataAlert()
+    //  }
       this.setState({ ...data });
     };
     errorAlert = () => {
@@ -167,12 +174,12 @@ export default class NidVerify2 extends Component {
               >
                 <Button
                     type="reset"
-                    color="warning"
-                    // color={
-                    //     this.state.colorButton === "red"
-                    //     ? "warning"
-                    //     : "success"
-                    // }
+                    // color="warning"
+                    color={
+                        this.state.colorButton === "red"
+                        ? "warning"
+                        : "success"
+                    }
                     outline
                     onClick={() => {
                       if(this.state.nid !== '') {
@@ -203,17 +210,19 @@ export default class NidVerify2 extends Component {
                 style={{ textAlign: "center", marginTop: "15px" }}
               >
                     <Button
-                    style={{display:"none"}}
+                    // style={{display:"none"}}
                      id='button1'
                      color='primary'
                      onClick={(e) => {
                         const ecresult = data.filter((obj) => obj.nationalId === this.state.nid);
                        if(ecresult?.length > 0){
                         this.setState({ecresult: ecresult}, ()=>{
-                          document.getElementById("button2").click();
+                          // document.getElementById("button2").click();
+                          this.dataAlert()
                         })
                        } else {
-                        this.successAlert()
+                        this.dataAlert()
+                        // this.successAlert()
                        }
                     }}
                     disabled={this.state.nid === ''}
