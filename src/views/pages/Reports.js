@@ -146,7 +146,7 @@ const Reports = () => {
   return (
     <Card>
       <CardHeader className="border-bottom">
-        <CardTitle tag="h4">Verified User List</CardTitle>
+        <CardTitle tag="h4">Application List</CardTitle>
       </CardHeader>
       <CardBody className="my-2 py-50">
       <Row
