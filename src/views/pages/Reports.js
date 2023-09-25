@@ -106,20 +106,20 @@ const Reports = () => {
         setData([
         ])
     }
-    if(moment(startDate).format("YYYY-MM-DD") === moment().format("2023-09-19")){
-        setData([
-            ["20-09-2023","Mirpur Branch","ASIF BIN MOSTAFA ANIK", "মোঃ গোলাম মোস্তফা", "রাব্বেয়া মোস্তফা", "1948048457", "17-09-1992", "Service", "2", "Verified"],
-            ["15-09-2023","Gulshan 1 Branch","MD SOLIMAN AL- HASAN", "মোঃ ফজলুর রহমান", "সালেহা বেগম", "3263339149", "01-11-1991", "ছাত্র", "3", "Verified"],
-        ])
-    }else if (moment(startDate).format("YYYY-MM-DD") !== moment().format("2023-09-19")){
-        setData([
-            ["20-09-2023","Mirpur Branch","ASIF BIN MOSTAFA ANIK", "মোঃ গোলাম মোস্তফা", "রাব্বেয়া মোস্তফা", "1948048457", "17-09-1992", "Service", "2", "Verified"],
-            ["15-09-2023","Gulshan 1 Branch","MD SOLIMAN AL- HASAN", "মোঃ ফজলুর রহমান", "সালেহা বেগম", "3263339149", "01-11-1991", "ছাত্র", "3", "Verified"],
-            ["12-09-2023","Gulshan 1 Branch","Moin Mostakim", "মোঃ নাছির উদ্দিন", "মনোয়ারা বেগম", "34546678996", "25-10-1989", "Service", "1", "Pending"],
-            ["02-09-2023","Dhanmondi Branch","Abdul Kalam", "আহমেদ শরীফ", "রেবাকা আমিন", "2389098765", "20-03-1992", "ছাত্র", "2", "Verified"]
-        ])
-    }
-    console.log("start", startDate)
+    // if(moment(startDate).format("YYYY-MM-DD") === moment().format("2023-09-19")){
+    //     setData([
+    //         ["20-09-2023","Mirpur Branch","ASIF BIN MOSTAFA ANIK", "মোঃ গোলাম মোস্তফা", "রাব্বেয়া মোস্তফা", "1948048457", "17-09-1992", "Service", "2", "Verified"],
+    //         ["15-09-2023","Gulshan 1 Branch","MD SOLIMAN AL- HASAN", "মোঃ ফজলুর রহমান", "সালেহা বেগম", "3263339149", "01-11-1991", "ছাত্র", "3", "Verified"],
+    //     ])
+    // }else if (moment(startDate).format("YYYY-MM-DD") !== moment().format("2023-09-19")){
+    //     setData([
+    //         ["20-09-2023","Mirpur Branch","ASIF BIN MOSTAFA ANIK", "মোঃ গোলাম মোস্তফা", "রাব্বেয়া মোস্তফা", "1948048457", "17-09-1992", "Service", "2", "Verified"],
+    //         ["15-09-2023","Gulshan 1 Branch","MD SOLIMAN AL- HASAN", "মোঃ ফজলুর রহমান", "সালেহা বেগম", "3263339149", "01-11-1991", "ছাত্র", "3", "Verified"],
+    //         ["12-09-2023","Gulshan 1 Branch","Moin Mostakim", "মোঃ নাছির উদ্দিন", "মনোয়ারা বেগম", "34546678996", "25-10-1989", "Service", "1", "Pending"],
+    //         ["02-09-2023","Dhanmondi Branch","Abdul Kalam", "আহমেদ শরীফ", "রেবাকা আমিন", "2389098765", "20-03-1992", "ছাত্র", "2", "Verified"]
+    //     ])
+    // }
+    // console.log("start", startDate)
  }
     const branchOption = [
         {value: null, label: "Select Branch"},
@@ -238,7 +238,7 @@ const Reports = () => {
         </Col>
       </Row>
       <MUIDataTable
-        title={"Applicant List"}
+        title={"Application List"}
         data={data}
         columns={columns}
         options={options}
