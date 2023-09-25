@@ -73,7 +73,7 @@ const VerifiedUserList = () => {
           </td>
           <td>
           <div style={{display:"inline-block", marginTop:"-15px"}}>
-            <div style={{display:"inline-block"}}>
+            {/* <div style={{display:"inline-block"}}>
               <GrantorList />
             </div>
             <div style={{display:"inline-block", marginLeft:"-15px"}}>
@@ -104,7 +104,7 @@ const VerifiedUserList = () => {
                 place="bottom"
                 content="Edit"
               />
-            </div>
+            </div> */}
             <div style={{display:"inline-block"}}>
               <Link 
               data-tooltip-id={`my-tooltip-${i}`}

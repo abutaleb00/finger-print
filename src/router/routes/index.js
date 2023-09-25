@@ -36,6 +36,7 @@ const NewGrantors = lazy(() => import("../../views/pages/NewGrantors"));
 const VerifiedUserList = lazy(() => import("../../views/pages/VerifiedUserList"));
 const GrantorEdit = lazy(() => import("../../views/pages/GrantorEdit"));
 const PendingUser = lazy(() => import("../../views/pages/PendingUser"));
+const Reports = lazy(() => import("../../views/pages/Reports"));
 const Login = lazy(() => import("../../views/Login"));
 const Register = lazy(() => import("../../views/Register"));
 const ForgotPassword = lazy(() => import("../../views/ForgotPassword"));
@@ -87,6 +88,10 @@ const Routes = [
   {
     path: "/application-form",
     element: <ApplicationForm />,
+  },
+  {
+    path: "/reports",
+    element: <Reports />,
   },
   {
     path: "/login",

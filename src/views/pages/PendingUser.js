@@ -12,6 +12,8 @@ import {
   Table,
   Button
 } from "reactstrap";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+import { User, Edit, BarChart } from 'react-feather'
 import { Link } from "react-router-dom";
 import "flatpickr/dist/themes/airbnb.css";
 // ** Third Party Components
@@ -20,7 +22,7 @@ import GrantorList from "./GrantorList";
 import GrantorEdit from "./GrantorEdit";
 // ** Utils
 // ** Icons Imports
-import { MoreVertical, Edit, Trash } from 'react-feather'
+
 // ** Styles
 import "@styles/react/libs/react-select/_react-select.scss";
 import image1 from '@src/assets/images/avator/1.png'
@@ -69,6 +71,38 @@ const PendingUser = () => {
                 </Badge>
               </td>
               <td>
+              <div style={{display:"inline-block"}}>
+              <GrantorList />
+            </div>
+            <div style={{display:"inline-block", marginLeft:"-15px"}}>
+              <Badge 
+              data-tooltip-id={`my-tooltip0-${i}`}
+              onClick={() => {
+                localStorage.setItem("accountType", "3")
+                window.location.href = "/nid-verify";
+                }}
+               color={'success'} className="text-capitalize" style={{cursor:"pointer", marginRight:"5px"}} >
+                <span >+ <User /></span>
+              </Badge>
+              <ReactTooltip
+                id={`my-tooltip0-${i}`}
+                place="bottom"
+                content="Add Guarantor"
+              />
+            </div>
+              <div style={{display:"inline-block", marginRight:"5px"}}>
+              <Link to="/grantor-edit"
+              data-tooltip-id={`my-tooltip1-${i}`}>
+              <Badge color={'warning'} className="text-capitalize" style={{cursor:"pointer"}} >
+                <span ><Edit /></span>
+              </Badge>
+              </Link>
+              <ReactTooltip
+                id={`my-tooltip1-${i}`}
+                place="bottom"
+                content="Edit"
+              />
+            </div>
               <div style={{display:"inline-block", marginRight:"10px"}}>
                   <Badge color={'success'} className="text-capitalize" style={{cursor:"pointer"}} >
                     <span >Approved</span>

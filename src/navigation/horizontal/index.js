@@ -1,4 +1,4 @@
-import { UserCheck, Home, Globe, UserPlus, UserMinus, Clock, Users } from "react-feather";
+import { UserCheck, Home, Globe, UserPlus, UserMinus, Clock, Users, BarChart2, PieChart } from "react-feather";
 
 export default [
   {
@@ -30,5 +30,11 @@ export default [
     title: "Verified List",
     icon: <UserCheck size={20} />,
     navLink: "/verified-userlist",
+  },
+  {
+    id: "Reports",
+    title: "Reports",
+    icon: <PieChart size={20} />,
+    navLink: "/reports",
   },
 ];

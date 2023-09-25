@@ -24,6 +24,7 @@ import GuarantorsProfile from "./GuarantorsProfile";
 import finger from "@src/assets/images/pages/fingerprint.svg";
 import data from "../components/ec.json"
 import Swal from 'sweetalert2'
+import moment from "moment";
   
 // ** Styles
 import "@styles/react/libs/react-select/_react-select.scss";
@@ -35,7 +36,7 @@ export default class NidVerify2 extends Component {
         this.state = {
         //   ...props.location.state,
           accountType: localStorage.getItem("accountType") !== undefined ? localStorage.getItem("accountType") : "0",
-          dob: new Date(),
+          dob: "1990-07-10",
           nid: "",
           colorButton: "red",
           loaderShow: false,
@@ -157,8 +158,8 @@ export default class NidVerify2 extends Component {
                 </Label>
                 <Flatpickr
                   className="form-control"
-                  defaultValue={this.state.dob}
-                  value={this.state.dob}
+                  defaultValue={moment(this.state.dob).format("YYYY-MM-DD")}
+                  value={moment(this.state.dob).format("YYYY-MM-DD")}
                   onChange={(date) => this.setState({dob: date})}
                   id="default-picker"
                 />
