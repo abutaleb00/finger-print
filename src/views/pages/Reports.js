@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import {
   Row,
   Col,
-  Badge,
   Card,
   CardHeader,
   CardTitle,
@@ -14,14 +13,8 @@ import {
 } from "reactstrap";
 import Flatpickr from "react-flatpickr"
 import Select from 'react-select'
-import { Tooltip as ReactTooltip } from "react-tooltip";
-import { Link } from "react-router-dom";
 import "flatpickr/dist/themes/airbnb.css";
 // ** Third Party Components
-import "cleave.js/dist/addons/cleave-phone.us";
-import GrantorList from "./GrantorList";
-import GrantorEdit from "./GrantorEdit";
-import { User, Edit, BarChart } from 'react-feather'
 import MUIDataTable from "mui-datatables"
 import moment from "moment"
 import { Search } from 'react-feather'
@@ -44,17 +37,18 @@ const styles = {
 const Reports = () => {
     const [startDate, setStartDate] = useState(moment().subtract(30, 'days').format("YYYY-MM-DD"))
     const [endDate, setEndDate] = useState(moment().format("YYYY-MM-DD"))
-    const [data, setData] = useState([["20-09-2023","Mirpur Branch","ASIF BIN MOSTAFA ANIK", "মোঃ গোলাম মোস্তফা", "রাব্বেয়া মোস্তফা", "1948048457", "17-09-1992", "Service", "2", "Verified"],
-    ["15-09-2023","Gulshan 1 Branch","MD SOLIMAN AL- HASAN", "মোঃ ফজলুর রহমান", "সালেহা বেগম", "3263339149", "01-11-1991", "ছাত্র", "3", "Verified"],
-    ["12-09-2023","Gulshan 1 Branch","Moin Mostakim", "মোঃ নাছির উদ্দিন", "মনোয়ারা বেগম", "34546678996", "25-10-1989", "Service", "1", "Pending"],
-    ["02-09-2023","Dhanmondi Branch","Abdul Kalam", "আহমেদ শরীফ", "রেবাকা আমিন", "2389098765", "20-03-1992", "ছাত্র", "2", "Verified"]])
+    const [data, setData] = useState([["20-09-2023","Mirpur Branch","Rasel Miah","ASIF BIN MOSTAFA ANIK", "মোঃ গোলাম মোস্তফা", "রাব্বেয়া মোস্তফা", "1948048457", "17-09-1992", "Service", "2", "Verified"],
+    ["15-09-2023","Gulshan 1 Branch","Abul Kalam", "MD SOLIMAN AL- HASAN", "মোঃ ফজলুর রহমান", "সালেহা বেগম", "3263339149", "01-11-1991", "ছাত্র", "3", "Verified"],
+    ["12-09-2023","Gulshan 1 Branch","Rasel Miah","Moin Mostakim", "মোঃ নাছির উদ্দিন", "মনোয়ারা বেগম", "34546678996", "25-10-1989", "Service", "1", "Pending"],
+    ["02-09-2023","Dhanmondi Branch","Azad Mahabub","Abdul Kalam", "আহমেদ শরীফ", "রেবাকা আমিন", "2389098765", "20-03-1992", "ছাত্র", "2", "Verified"]])
     const [state, setState] = useState({
         startDate: startDate,
         endDate: endDate,
         branch: null,
-        status: null
+        status: null,
+        agent: null
     })
-    const columns = ["Create Date", "Branch", "Applicant Name", "Father Name", "Mother Name", "NID Number", "Date of Birth", "Occupation", "Guarantor", "Status"]
+    const columns = ["Create Date", "Branch", "Agent", "Applicant Name", "Father Name", "Mother Name", "NID Number", "Date of Birth", "Occupation", "Guarantor", "Status"]
 
     const data1 = [
      ["20-09-2023","Mirpur Branch","ASIF BIN MOSTAFA ANIK", "মোঃ গোলাম মোস্তফা", "রাব্বেয়া মোস্তফা", "1948048457", "17-09-1992", "Service", "2", "Verified"],
@@ -65,10 +59,10 @@ const Reports = () => {
  const getSearch =() =>{
     if(state.branch === null){
         setData([
-            ["20-09-2023","Mirpur Branch","ASIF BIN MOSTAFA ANIK", "মোঃ গোলাম মোস্তফা", "রাব্বেয়া মোস্তফা", "1948048457", "17-09-1992", "Service", "2", "Verified"],
-            ["15-09-2023","Gulshan 1 Branch","MD SOLIMAN AL- HASAN", "মোঃ ফজলুর রহমান", "সালেহা বেগম", "3263339149", "01-11-1991", "ছাত্র", "3", "Verified"],
-            ["12-09-2023","Gulshan 1 Branch","Moin Mostakim", "মোঃ নাছির উদ্দিন", "মনোয়ারা বেগম", "34546678996", "25-10-1989", "Service", "1", "Pending"],
-            ["02-09-2023","Dhanmondi Branch","Abdul Kalam", "আহমেদ শরীফ", "রেবাকা আমিন", "2389098765", "20-03-1992", "ছাত্র", "2", "Verified"]
+          ["20-09-2023","Mirpur Branch","Rasel Miah","ASIF BIN MOSTAFA ANIK", "মোঃ গোলাম মোস্তফা", "রাব্বেয়া মোস্তফা", "1948048457", "17-09-1992", "Service", "2", "Verified"],
+          ["15-09-2023","Gulshan 1 Branch","Abul Kalam", "MD SOLIMAN AL- HASAN", "মোঃ ফজলুর রহমান", "সালেহা বেগম", "3263339149", "01-11-1991", "ছাত্র", "3", "Verified"],
+          ["12-09-2023","Gulshan 1 Branch","Rasel Miah","Moin Mostakim", "মোঃ নাছির উদ্দিন", "মনোয়ারা বেগম", "34546678996", "25-10-1989", "Service", "1", "Pending"],
+          ["02-09-2023","Dhanmondi Branch","Azad Mahabub","Abdul Kalam", "আহমেদ শরীফ", "রেবাকা আমিন", "2389098765", "20-03-1992", "ছাত্র", "2", "Verified"]
         ])
     } else if(state.branch === 1){
         setData([
@@ -106,6 +100,16 @@ const Reports = () => {
         setData([
         ])
     }
+    if(state.agent === 1){
+    setData(
+      [["15-09-2023","Gulshan 1 Branch","Abul Kalam", "MD SOLIMAN AL- HASAN", "মোঃ ফজলুর রহমান", "সালেহা বেগম", "3263339149", "01-11-1991", "ছাত্র", "3", "Verified"]])
+    } else if (state.agent === 2) {
+      setData([["20-09-2023","Mirpur Branch","Rasel Miah","ASIF BIN MOSTAFA ANIK", "মোঃ গোলাম মোস্তফা", "রাব্বেয়া মোস্তফা", "1948048457", "17-09-1992", "Service", "2", "Verified"],
+    ["12-09-2023","Gulshan 1 Branch","Rasel Miah","Moin Mostakim", "মোঃ নাছির উদ্দিন", "মনোয়ারা বেগম", "34546678996", "25-10-1989", "Service", "1", "Pending"]
+      ])
+    } else if( state.agent === 3){
+      setData([ ["02-09-2023","Dhanmondi Branch","Azad Mahabub","Abdul Kalam", "আহমেদ শরীফ", "রেবাকা আমিন", "2389098765", "20-03-1992", "ছাত্র", "2", "Verified"]])
+    }
     // if(moment(startDate).format("YYYY-MM-DD") === moment().format("2023-09-19")){
     //     setData([
     //         ["20-09-2023","Mirpur Branch","ASIF BIN MOSTAFA ANIK", "মোঃ গোলাম মোস্তফা", "রাব্বেয়া মোস্তফা", "1948048457", "17-09-1992", "Service", "2", "Verified"],
@@ -121,6 +125,12 @@ const Reports = () => {
     // }
     // console.log("start", startDate)
  }
+    const agentOption = [
+        {value: null, label: "Select Agent"},
+        {value: 1, label: "Abul Kalam"},
+        {value: 2, label: "Azad Mahabub"},
+        {value: 3, label: "Rasel Miah"}
+      ]    
     const branchOption = [
         {value: null, label: "Select Branch"},
         {value: 1, label: "Mirpur Branch"},
@@ -155,7 +165,7 @@ const Reports = () => {
         <Col md="2">
         <label>Start Date</label>
           <Flatpickr
-            style={{ backgroundColor:"#fff", opacity: "1", padding:"9px 12px" }}
+            style={{ backgroundColor:"#fff", opacity: "1", padding:"10px 12px" }}
             value={startDate}
             id="date-time-picker"
             className="form-control"
@@ -170,7 +180,7 @@ const Reports = () => {
             options={{
               dateFormat: "Y-m-d"
             }}
-            style={{ backgroundColor:"#fff", opacity: "1", padding:"9px 12px" }}
+            style={{ backgroundColor:"#fff", opacity: "1", padding:"10px 12px" }}
             value={endDate}
             data-enable-time
             id="date-time-picker"
@@ -181,7 +191,24 @@ const Reports = () => {
             }}
           />
         </Col>
-        <Col md="3">
+        <Col md="2">
+        <FormGroup className="mbb">
+            <label>Agent Name</label>
+          <Select
+          className='react-select'
+          styles={styles}
+          classNamePrefix='select'
+          placeholder="Select Agent"
+          // defaultValue={currencyOptions[0]}
+          options={agentOption}
+          isClearable={false}
+          onChange={(e) => setState({...state, agent: e.value})}
+          maxMenuHeight={140}
+          
+           />
+        </FormGroup>
+        </Col>
+        <Col md="2">
         <FormGroup className="mbb">
             <label>Branch Name</label>
           <Select
@@ -198,7 +225,7 @@ const Reports = () => {
            />
         </FormGroup>
         </Col>
-        <Col md="3">
+        <Col md="2">
         <FormGroup className="mbb">
          <label>Select Status</label>
           <Select
