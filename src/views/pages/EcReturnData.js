@@ -25,8 +25,8 @@ const EcReturnData = (props) => {
   const [permanentAddress, setPermanentAddress] = useState(location.state?.userinfo[0]?.permanentAddress)
   const [presentAddress, setPresentAddress] = useState(location.state?.userinfo[0]?.presentAddress)
   const genderOptions = [
-    { value: "male", label: "Male" },
-    { value: "female", label: "Female", color: "#0052CC", isFixed: true },
+    { value: "male", label: "পুরুষ" },
+    { value: "female", label: "মহিলা", color: "#0052CC", isFixed: true },
     { value: "third", label: "Third Person" },
   ];
   console.log("props", location.state)

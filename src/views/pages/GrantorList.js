@@ -68,7 +68,7 @@ const GrantorList = () => {
             <img className='me-75' src={image2} alt='angular' height='20' width='20' />
           </td>
           <td><span className='align-middle fw-bold'>Abdul Kalam</span></td>
-          <td>Ahamed Sharif</td>
+          <td>আহমেদ শরীফ</td>
           <td>9088768732423</td>
           <td>01927485676</td>
           <td>Brother</td>
@@ -90,7 +90,7 @@ const GrantorList = () => {
             <img className='me-75' src={image1} alt='angular' height='20' width='20' />
           </td>
           <td><span className='align-middle fw-bold'>Nadia Hassan</span></td>
-          <td>Kaser Hossain</td>
+          <td>কাসের হোসেন</td>
           <td>8963453459</td>
           <td>0192792304</td>
           <td>Friend</td>
@@ -112,7 +112,7 @@ const GrantorList = () => {
             <img className='me-75' src={image3} alt='angular' height='20' width='20' />
           </td>
           <td><span className='align-middle fw-bold'>Amirul Islam</span></td>
-          <td>Javed Iqbal</td>
+          <td>জাবেদ ইকবাল</td>
           <td>9088768732423</td>
           <td>01723426478</td>
           <td>Wife</td>

@@ -9,6 +9,7 @@ export default () => {
   return defineConfig({
     plugins: [react()],
     define: {
+      // global: 'globalThis',
       global: 'global'
     },
     server: {

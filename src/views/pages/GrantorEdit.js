@@ -89,8 +89,8 @@ const GrantorEdit = () => {
       region: "ঢাকা",
   })
   const genderOptions = [
-    { value: "male", label: "Male" },
-    { value: "female", label: "Female", color: "#0052CC", isFixed: true },
+    { value: "male", label: "পুরুষ" },
+    { value: "female", label: "মহিলা", color: "#0052CC", isFixed: true },
     { value: "third", label: "Third Person" },
   ];
 
